@@ -40,7 +40,7 @@ export default {
     },
 
     incrementIfOdd() {
-      if(this.count % 2 != 0) {
+      if(this.$store.state.count.count % 2 != 0) {
         this.$store.commit(INCREMENT_TYPE, this.selectCount);
       }
     },

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>我是Person组件, 上方组件求和为 {{this.$store.state.count.count}}</h2>
+    <h2>{{name}}, 上方组件求和为 {{this.$store.state.count.count}}</h2>
     <input v-model="inputName" type="text" placeholder="name"/>&nbsp;
     <input v-model="inputAge" type="text" placeholder="age"/>&nbsp;
     <button @click="addPerson">添加</button>
@@ -14,6 +14,13 @@
 import { ADD_PERSON } from '../store/mutation-types';
 
 export default {
+
+  props: {
+    name: {
+      default: 'XX组件',
+      type: String
+    }
+  },
   data() {
     return {
       inputName: '',
@@ -25,6 +32,7 @@ export default {
     addPerson() {
       if(this.inputName && this.inputAge) {
         this.$store.commit(ADD_PERSON, {name: this.inputName, age: this.inputAge})
+        this.$emit("addPerson", {name: this.inputName, age: this.inputAge});
         this.inputName = ''
         this.inputAge = ''
       }
