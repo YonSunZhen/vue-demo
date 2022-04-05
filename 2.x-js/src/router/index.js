@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Store from '../views/Store.vue'
 import Set from '../views/Set.vue'
+import Prop from '../views/Prop.vue'
 
 Vue.use(VueRouter)
 
@@ -21,6 +22,11 @@ const routes = [
     path: '/set',
     name: 'Set',
     component: Set
+  },
+  {
+    path: '/prop',
+    name: 'Prop',
+    component: Prop
   },
   {
     path: '/about',

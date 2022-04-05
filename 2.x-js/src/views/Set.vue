@@ -20,19 +20,35 @@ export default {
   name: 'Set',
   data() {
     return {
-      arr: [1,2,3],
-      obj: {
-        a: 'a1',
-        b: 'b1'
-      }
+      arr: [],
+      obj: {}
     }
   },
   computed: {
     
   },
-  async mounted() {
-
+  beforeCreate() {
+    // this.arr = [1,2,3]
+    // this.obj = {
+    //   a: 'a1',
+    //   b: 'b1'
+    // }
   },
+  created() {
+    // this.arr = [1,2,3]
+    // this.obj = {
+    //   a: 'a1',
+    //   b: 'b1'
+    // }
+  },
+  async mounted() {
+    this.arr = [1,2,3]
+    this.obj = {
+      a: 'a1',
+      b: 'b1'
+    }
+  },
+
   watch: {
     
   },
@@ -43,11 +59,19 @@ export default {
       // this.$set(this.arr, 0, 11)
       // this.$set(this.arr, 3, 44)
     },
-    changeObj() {
+    async changeObj() {
       // TODO: 为何会触发视图刷新？
+      await this.test()
       this.obj.a = 'a11'
-      // this.obj.c = 'c1'
       // this.$set(this.obj, 'c', 'c1')
+      // this.obj.d = 'd1'
+    },
+    async test() {
+      return new Promise((res) => {
+        setTimeout(() => {
+          res()
+        },3000)
+      })
     }
   }
 }
