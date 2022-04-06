@@ -1,6 +1,6 @@
 <template>
   <div>
-    {{test}}
+    
   </div>
 </template>
 
@@ -20,17 +20,20 @@ export default {
       console.log('debug3');
       // 只要这里面的值其中一个发生变化 就会触发执行 
       return this.title + this.count
+    },
+    test1() {
+      return this.test
     }
   },
-  // watch: {
-  //   title(){
-  //     console.log('debug1');
-  //     return this.title
-  //   }
-  // },
+  watch: {
+    title(){
+      console.log('debug1');
+      // return this.title
+    }
+  },
   mounted() {
-    console.log('debug2');
-    console.log(this.title);
+    // console.log('debug2');
+    // console.log(this.title);
   },
   methods: {
     
