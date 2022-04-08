@@ -7,10 +7,14 @@
       <button @click="changeArr">点击改变数组</button>
     </div>
     <div>
-      <span v-for="(value, name) in obj" :key="name">
+      <!-- <span v-for="(value, name) in obj" :key="name">
         {{ name }} : {{ value }}
-      </span>
+      </span> -->
+      <span>{{obj.a}}</span>
+      <span>{{obj.c}}</span>
+      <!-- <span>{{obj.d}}</span> -->
       <button @click="changeObj">点击改变对象</button>
+      <button @click="changeObj1">点击改变对象1</button>
     </div>
   </div>
 </template>
@@ -45,12 +49,15 @@ export default {
     this.arr = [1,2,3]
     this.obj = {
       a: 'a1',
-      b: 'b1'
+      b: 'b1',
+      c: 'c1'
     }
   },
 
   watch: {
-    
+    // 'obj.a' () {
+    //   console.log('debug1')
+    // }
   },
   methods: {
     changeArr() {
@@ -61,10 +68,16 @@ export default {
     },
     async changeObj() {
       // TODO: 为何会触发视图刷新？
-      await this.test()
+      // await this.test()
+      console.log('debug1')
       this.obj.a = 'a11'
-      // this.$set(this.obj, 'c', 'c1')
-      // this.obj.d = 'd1'
+      this.$set(this.arr, 0, 11)
+      this.obj.c = 'c11'
+      // this.obj.d = 'd'
+    },
+    changeObj1() {
+      // 没有执行依赖收集 所以不会更新
+      this.obj.c = 'c1'
     },
     async test() {
       return new Promise((res) => {
