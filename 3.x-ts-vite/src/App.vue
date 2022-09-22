@@ -1,18 +1,33 @@
+<!--
+ * @Author: yongzhen.sun
+ * @Date: 2022-07-20 15:45:25
+ * @LastEditors: yongzhen.sun
+ * @LastEditTime: 2022-09-22 09:04:50
+ * @Description: file content
+-->
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <!-- <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" /> -->
+  <button @click="test">haha</button>
+  <Computed :test="computedTest"/>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { defineComponent, ref } from 'vue'
 import HelloWorld from './components/HelloWorld.vue'
+import Computed from './components/Computed.vue'
 
-export default defineComponent({
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+const test = () => {
+  console.log('debug2')
+  computedTest.value.name = 2
+}
+
+const computedTest = ref({
+  name: 1
 })
+
+
+
 </script>
 
 <style>
