@@ -1,6 +1,13 @@
+<!--
+ * @Author: yongzhen.sun
+ * @Date: 2022-07-20 15:45:25
+ * @LastEditors: yongzhen.sun
+ * @LastEditTime: 2022-10-28 16:54:57
+ * @Description: file content
+-->
 <template>
   <div id="app">
-      <img alt="Vue logo" src="./assets/logo.png">
+    <img alt="Vue logo" src="./assets/logo.png">
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/store">Store</router-link> |

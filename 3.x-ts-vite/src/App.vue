@@ -2,17 +2,19 @@
  * @Author: yongzhen.sun
  * @Date: 2022-07-20 15:45:25
  * @LastEditors: yongzhen.sun
- * @LastEditTime: 2022-09-22 09:04:50
+ * @LastEditTime: 2022-10-28 17:15:55
  * @Description: file content
 -->
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
+  <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
   <!-- <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" /> -->
-  <button @click="test">haha</button>
-  <Computed :test="computedTest"/>
+  <!-- <button @click="test">haha</button>
+  <Computed :test="computedTest"/> -->
+  <!-- <router-link to="/watch">Watch</router-link> -->
+  <router-view />
 </template>
 
-<script lang="ts" setup>
+<script lang="ts" setup name="App">
 import { defineComponent, ref } from 'vue'
 import HelloWorld from './components/HelloWorld.vue'
 import Computed from './components/Computed.vue'

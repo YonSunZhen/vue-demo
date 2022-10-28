@@ -2,43 +2,40 @@
  * @Author: yongzhen.sun
  * @Date: 2022-09-22 08:47:05
  * @LastEditors: yongzhen.sun
- * @LastEditTime: 2022-09-22 09:08:40
+ * @LastEditTime: 2022-10-28 17:13:30
  * @Description: file content
 -->
 <template>
-{{test1.name}}
+<button @click="clickRef">ref</button> <br />
+<button @click="clickReactive">reactive</button>
 </template>
 
-<script lang="ts" setup name="Computed">
-import { ref, defineComponent, computed } from 'vue'
-const props = defineProps({
-  test: {
-    type: Object,
-    default: () => ({})
-  }
+<script lang="ts" setup name="WatchDemo">
+import { ref, defineComponent, computed, reactive, watch } from 'vue'
+const testRef = ref({
+  name: 'aaa'
 })
-const test1 = computed(() => {
-  console.log('debug1')
-  return props.test
+const testReactive = reactive({
+  name: 'bbb'
 })
-// const test1 = ref(props.test)
+// 监听 ref 数据
+watch(testRef, (val) => {
+  console.log('ref改变了');
+})
+// 监听 reactive 数据
+watch(testReactive, (val) => {
+  console.log('reactive改变了');
+})
+
+const clickRef = () => {
+  testRef.value.name = 'aaa1'
+}
+const clickReactive = () => {
+  testReactive.name = 'bbb1'
+}
+
 </script>
 
 <style scoped>
-a {
-  color: #42b983;
-}
-
-label {
-  margin: 0 0.5em;
-  font-weight: bold;
-}
-
-code {
-  background-color: #eee;
-  padding: 2px 4px;
-  border-radius: 4px;
-  color: #304455;
-}
 </style>
   
