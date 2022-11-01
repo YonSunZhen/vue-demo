@@ -2,16 +2,16 @@
  * @Author: yongzhen.sun
  * @Date: 2022-09-22 08:47:05
  * @LastEditors: yongzhen.sun
- * @LastEditTime: 2022-10-28 17:13:30
+ * @LastEditTime: 2022-11-01 14:50:07
  * @Description: file content
 -->
 <template>
-<button @click="clickRef">ref</button> <br />
-<button @click="clickReactive">reactive</button>
+<button @click="clickRef">ref</button>
+<button @click="clickReactive">reactive11</button>
 </template>
 
 <script lang="ts" setup name="WatchDemo">
-import { ref, defineComponent, computed, reactive, watch } from 'vue'
+import { ref, reactive, watch } from 'vue'
 const testRef = ref({
   name: 'aaa'
 })

@@ -2,12 +2,11 @@
  * @Author: yongzhen.sun
  * @Date: 2022-10-28 16:40:08
  * @LastEditors: yongzhen.sun
- * @LastEditTime: 2022-10-28 17:18:25
+ * @LastEditTime: 2022-11-01 14:52:41
  * @Description: file content
  */
-import type { Plugin } from 'vue'
-import { createRouter, createWebHistory } from 'vue-router'
-import WatchDemo from '../components/watch/watch.vue'
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import WatchDemo from '../components/watch/Watch.vue'
 import Computed from '../components/Computed.vue'
 
 
@@ -18,7 +17,8 @@ const routes = [
   },
   {
     path: '/watch',
-    component: Computed
+    name: 'watch',
+    component: WatchDemo
   },
 ]
 const router = createRouter({
