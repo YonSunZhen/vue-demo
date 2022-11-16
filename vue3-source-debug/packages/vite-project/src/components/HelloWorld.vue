@@ -1,34 +1,69 @@
+<!--
+ * @Author: yongzhen.sun
+ * @Date: 2022-11-16 09:19:40
+ * @LastEditors: yongzhen.sun
+ * @LastEditTime: 2022-11-16 17:34:02
+ * @Description: file content
+-->
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, reactive, watch, computed } from 'vue'
+const testRef = ref({
+  name: 'aaa',
+  detail: {
+    age: 18
+  }
+})
+watch(testRef.value, (val, old) => {
+  console.log('ref改变了, new', val);
+  console.log('ref改变了, old', old);
+}, { deep: true })
+// watch(testRef.value.detail.age, (val, old) => {
+//   debugger
+//   console.log('ref改变了 new', val);
+//   console.log('ref改变了 old', old);
+// })
+// debugger
+watch(testRef.value.detail, (val, old) => {
+  debugger
+  console.log('ref改变了 new', val);
+  console.log('ref改变了 old', old);
+})
+// const clickRef = () => {
+//   testRef.value.detail.age = 2
+// }
 
-defineProps<{ msg: string }>()
+const testReactive = reactive({
+  name: 'bbb',
+  detail: {
+    age: 18
+  }
+})
+watch(testReactive, (val, old) => {
+  console.log('reactive改变了 new', val);
+  console.log('reactive改变了 old', old);
+}, { deep: true })
 
-const count = ref(0)
+
+
+const testComputed = computed(() => testReactive.name)
+debugger
+// 监听 computed 数据
+watch(testComputed, (val, old) => {
+  debugger
+  console.log('reactive改变了');
+})
+
+const clickRef = () => {
+  testRef.value.detail.age = 2
+}
+const clickReactive = () => {
+  testReactive.name = 'bbb1'
+}
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
-
-  <div class="card">
-    <button type="button" @click="count++">count is {{ count }}</button>
-    <p>
-      Edit
-      <code>components/HelloWorld.vue</code> to test HMR
-    </p>
-  </div>
-
-  <p>
-    Check out
-    <a href="https://vuejs.org/guide/quick-start.html#local" target="_blank"
-      >create-vue</a
-    >, the official Vue + Vite starter
-  </p>
-  <p>
-    Install
-    <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>
-    in your IDE for a better DX
-  </p>
-  <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
+  <button @click="clickRef">ref</button>
+  <button @click="clickReactive">reactive</button>
 </template>
 
 <style scoped>

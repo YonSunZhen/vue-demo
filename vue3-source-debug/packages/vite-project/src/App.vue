@@ -1,3 +1,10 @@
+<!--
+ * @Author: yongzhen.sun
+ * @Date: 2022-11-16 09:19:40
+ * @LastEditors: yongzhen.sun
+ * @LastEditTime: 2022-11-16 12:13:50
+ * @Description: file content
+-->
 <script setup lang="ts">
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
@@ -13,7 +20,7 @@ import HelloWorld from './components/HelloWorld.vue'
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <HelloWorld msg="Vite + Vue" />
+  <HelloWorld  />
 </template>
 
 <style scoped>

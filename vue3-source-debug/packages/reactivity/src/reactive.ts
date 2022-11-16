@@ -229,6 +229,7 @@ export function isReadonly(value: unknown): boolean {
 }
 
 export function isShallow(value: unknown): boolean {
+  // isShallow 表示什么? -- 通过 shallowRef 创建的 -- 表示浅层作用形式 只有整体更改时才会触发更新
   return !!(value && (value as Target)[ReactiveFlags.IS_SHALLOW])
 }
 
