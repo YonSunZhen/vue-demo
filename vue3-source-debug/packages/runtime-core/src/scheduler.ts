@@ -106,6 +106,7 @@ export function queueJob(job: SchedulerJob) {
 }
 
 function queueFlush() {
+  // 多次修改同一个值
   if (!isFlushing && !isFlushPending) {
     isFlushPending = true
     currentFlushPromise = resolvedPromise.then(flushJobs)

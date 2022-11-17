@@ -205,7 +205,7 @@ function doWatch(
   let isMultiSource = false
 
   if (isRef(source)) {
-    debugger
+    // debugger
     getter = () => source.value
     forceTrigger = isShallow(source)
   } else if (isReactive(source)) {

@@ -5,6 +5,9 @@
   "scripts": {
     "dev": "node scripts/dev.js --sourcemap",
     "build": "node scripts/build.js --sourcemap",
+    "build:reactivity": "node scripts/build.js --sourcemap -f esm-bundler reactivity",
+    "build:runtime-core": "node scripts/build.js --sourcemap -f esm-bundler runtime-core",
+    "build:runtime-dom": "node scripts/build.js --sourcemap -f esm-bundler runtime-dom",
     "size": "run-s size-global size-baseline",
     "size-global": "node scripts/build.js vue runtime-dom -f global -p",
     "size-baseline": "node scripts/build.js runtime-dom runtime-core reactivity shared -f esm-bundler && cd packages/size-check && vite build && node brotli",
