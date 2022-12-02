@@ -2,13 +2,14 @@
  * @Author: yongzhen.sun
  * @Date: 2022-07-20 15:45:25
  * @LastEditors: yongzhen.sun
- * @LastEditTime: 2022-11-01 14:52:40
+ * @LastEditTime: 2022-12-02 17:00:07
  * @Description: file content
 -->
 <template>
   <nav>
     <!-- <router-link to="/">Home</router-link> | -->
     <router-link to="/watch">Watch</router-link>
+    <router-link to="/rxjs">Rxjs</router-link>
   </nav>
   <router-view/>
 </template>
