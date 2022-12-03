@@ -2,7 +2,7 @@
  * @Author: yongzhen.sun
  * @Date: 2022-07-20 15:45:25
  * @LastEditors: yongzhen.sun
- * @LastEditTime: 2022-12-02 17:00:07
+ * @LastEditTime: 2022-12-03 22:07:04
  * @Description: file content
 -->
 <template>
@@ -10,6 +10,7 @@
     <!-- <router-link to="/">Home</router-link> | -->
     <router-link to="/watch">Watch</router-link>
     <router-link to="/rxjs">Rxjs</router-link>
+    <router-link to="/tsx">Tsx</router-link>
   </nav>
   <router-view/>
 </template>
