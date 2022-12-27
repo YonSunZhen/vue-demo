@@ -2,7 +2,7 @@
  * @Author: yongzhen.sun
  * @Date: 2022-11-16 09:19:40
  * @LastEditors: yongzhen.sun
- * @LastEditTime: 2022-11-17 16:57:32
+ * @LastEditTime: 2022-12-27 11:05:39
  * @Description: file content
 -->
 <script setup lang="ts">
@@ -17,7 +17,6 @@ const testRef = ref({
 //   console.log('ref改变了, new', val);
 //   console.log('ref改变了, old', old);
 // }, { deep: true })
-debugger
 watch(() => testRef.value.detail.age, (val, old) => {
   testRef.value.detail.age++
   console.log('ref改变了 new', val);
