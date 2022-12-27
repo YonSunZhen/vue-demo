@@ -2,13 +2,13 @@
  * @Author: yongzhen.sun
  * @Date: 2022-09-22 08:47:05
  * @LastEditors: yongzhen.sun
- * @LastEditTime: 2022-12-27 11:39:38
+ * @LastEditTime: 2022-12-27 14:48:55
  * @Description: file content
 -->
 <template>
   <button @click="clickRef">ref11</button>
   <button @click="clickReactive">reactive11</button>
-  </template>
+</template>
   
 <script lang="ts" setup name="WatchDemo">
 import { ref, reactive, watch } from 'vue'
@@ -35,9 +35,9 @@ const testReactive = reactive({
 //   console.log('reactive改变了');
 // })
 // // 监听多个值
-watch([testRef.value, () => JSON.parse(JSON.stringify(testReactive))],  ([val1, val2], [_val1, _val2]) => {
+watch([testRef.value, () => JSON.parse(JSON.stringify(testReactive))],  (val1, val2) => {
   console.log('val1',val1)
-  // console.log('val2',val2)
+  console.log('val2',val2)
   // console.log('_val1',_val1)
   // console.log('_val2',_val2)
   console.log('改变了');
