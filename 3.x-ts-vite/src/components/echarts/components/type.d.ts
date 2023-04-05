@@ -2,7 +2,7 @@
  * @Author: yongzhen.sun
  * @Date: 2023-04-05 11:10:47
  * @LastEditors: yongzhen.sun
- * @LastEditTime: 2023-04-05 18:00:38
+ * @LastEditTime: 2023-04-05 23:11:18
  * @Description: file content
  */
 import { ECElementEvent, SelectChangedPayload, HighlightPayload,  } from 'echarts/types/src/util/types'
@@ -50,12 +50,46 @@ export namespace ChartsEvents {
   // }
 }
 
+import {
+  // 系列类型的定义后缀都为 SeriesOption
+  BarSeriesOption,
+  LineSeriesOption,
+  PieSeriesOption,
+  FunnelSeriesOption,
+  GaugeSeriesOption,
+} from 'echarts/charts';
+
+
+import { XAXisComponentOption, YAXisComponentOption } from 'echarts';
+
+import {
+  TitleComponentOption,
+  TooltipComponentOption,
+  GridComponentOption,
+  DatasetComponentOption,
+  AriaComponentOption,
+  AxisPointerComponentOption,
+  LegendComponentOption,
+} from 'echarts/components'; // 组件
+
+
+type BaseOptionType = XAXisComponentOption | YAXisComponentOption | TitleComponentOption | TooltipComponentOption | LegendComponentOption | GridComponentOption
+
+// 基本配置的类型定义
+type BaseOption = echarts.ComposeOption<BaseOptionType>
+
+// 所有配置的类型定义
+type EChartsOptions = echarts.EChartsCoreOption & BaseOption
+
+
+
 // TODO: 先重复定义 后续优化
 export interface Props {
-  type?: ChartType,
-  options?: echarts.EChartsCoreOption,
+  options?: EChartsOptions
 }
 
 export {
-  ChartType
+  ChartType,
+  BaseOption,
+  EChartsOptions
 }

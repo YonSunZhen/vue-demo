@@ -10,6 +10,7 @@ import {
 import { LabelLayout, UniversalTransition } from "echarts/features";
 import { CanvasRenderer } from "echarts/renderers";
 import * as echarts from "echarts/core"
+import { BaseOption } from './type'
 
 export const useEchartsModule = () => {
   echarts.use([
@@ -28,4 +29,13 @@ export const useEchartsModule = () => {
     UniversalTransition,
     CanvasRenderer
   ]);
+}
+
+// 将多项配置进行合并 后面的会覆盖前面的
+export function mergeOptions(optionsArr: BaseOption[]) {
+  let res = {}
+  optionsArr.forEach(item => {
+    res = Object.assign(res, item)
+  })
+  return res
 }

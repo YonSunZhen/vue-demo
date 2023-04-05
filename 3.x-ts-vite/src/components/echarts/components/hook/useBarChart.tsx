@@ -2,17 +2,26 @@
  * @Author: yongzhen.sun
  * @Date: 2023-04-05 11:13:13
  * @LastEditors: yongzhen.sun
- * @LastEditTime: 2023-04-05 18:32:20
+ * @LastEditTime: 2023-04-05 22:40:57
  * @Description: file content
  */
 import Charts from '../Charts.vue'
-import { Props } from '../type'
+import { Props, BaseOption } from '../type'
+import { mergeOptions } from '../utils'
+import { commonOptions } from '../constant'
 
-export const useBarChart = () => {
+export const useBarChart = (options: any) => {
+  const barChartOption: BaseOption = {
+    legend: {
+      data: ['销量牛逼']
+    },
+  };
   // TODO: 函数式组件添加事件类型提示 -- hook 只负责处理数据，不返回实际组件文件
   const BarChartRender = (props: Props) => {
+    const _options = mergeOptions([commonOptions, barChartOption, options, props.options as any])
+    console.log('debug1', _options)
     return (
-      <Charts {...props}></Charts>
+      <Charts {...props} options={_options}></Charts>
     )
   }
   return {

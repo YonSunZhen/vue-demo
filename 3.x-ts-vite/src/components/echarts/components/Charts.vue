@@ -2,19 +2,17 @@
  * @Author: yongzhen.sun
  * @Date: 2023-04-05 11:03:02
  * @LastEditors: yongzhen.sun
- * @LastEditTime: 2023-04-05 18:34:45
+ * @LastEditTime: 2023-04-05 23:12:55
  * @Description: file content
 -->
 <script lang="tsx" setup name="Charts">
 import * as echarts from "echarts/core"
 import { ShallowRef } from 'vue'
-import { ChartsEvents, ChartType } from "./type";
+import { ChartsEvents, EChartsOptions } from "./type";
 import { useEchartsModule } from './utils'
 
-
 export interface Props {
-  type?: ChartType,
-  options?: echarts.EChartsCoreOption
+  options?: EChartsOptions
 }
 
 interface EventEmitsType {
@@ -24,39 +22,17 @@ interface EventEmitsType {
 defineEmits<EventEmitsType>();
 
 const props = withDefaults(defineProps<Props>(), {
-  type: 'bar',
   options: () => ({} as echarts.EChartsCoreOption)
 })
 
-const { type, options } = toRefs(props);
+const { options } = toRefs(props);
 
 const useCharts = (el: ShallowRef<HTMLElement>) => {
   useEchartsModule() 
   const charts = shallowRef<echarts.ECharts>();
   const initChart = async () => {
     charts.value = echarts.init(el.value);
-    // options = await getOptions();
-    const option = {
-      title: {
-        text: 'ECharts 入门示例'
-      },
-      tooltip: {},
-      legend: {
-        data: ['销量']
-      },
-      xAxis: {
-        data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
-      },
-      yAxis: {},
-      series: [
-        {
-          name: '销量',
-          type: 'bar',
-          data: [5, 20, 36, 10, 10, 20]
-        }
-      ]
-    };
-    charts.value.setOption(option);
+    charts.value.setOption(options as any);
     // chartsResize.add(charts.value); // 将图表实例添加到缓存中
     initEvent();
   };
@@ -84,6 +60,7 @@ const useCharts = (el: ShallowRef<HTMLElement>) => {
     setOptions
   }
 }
+
 const chartRef = shallowRef();
 const { charts, setOptions, initChart } = useCharts(chartRef);
 
